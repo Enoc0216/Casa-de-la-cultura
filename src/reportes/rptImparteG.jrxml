@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptImparteG" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a142342a-759c-4355-ae12-3257a323ae2f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     docente.`id` AS docente_id,
+     docente.`nombre` AS docente_nombre,
+     docente.`apellidoP` AS docente_apellidoP,
+     docente.`apellidoM` AS docente_apellidoM,
+     docente.`telefono` AS docente_telefono,
+     docente.`contraseña` AS docente_contraseña,
+     docente.`foto` AS docente_foto,
+     imparte.`id` AS imparte_id,
+     imparte.`id_taller` AS imparte_id_taller,
+     imparte.`id_docente` AS imparte_id_docente,
+     imparte.`fecha_inicio` AS imparte_fecha_inicio,
+     imparte.`fecha_termino` AS imparte_fecha_termino,
+     taller.`id` AS taller_id,
+     taller.`nombre` AS taller_nombre,
+     taller.`descripcion` AS taller_descripcion,
+     taller.`id_evento` AS taller_id_evento
+FROM
+     `docente` docente INNER JOIN `imparte` imparte ON docente.`id` = imparte.`id_docente`
+     INNER JOIN `taller` taller ON imparte.`id_taller` = taller.`id`]]>
+	</queryString>
+	<field name="docente_id" class="java.lang.Integer"/>
+	<field name="docente_nombre" class="java.lang.String"/>
+	<field name="docente_apellidoP" class="java.lang.String"/>
+	<field name="docente_apellidoM" class="java.lang.String"/>
+	<field name="docente_telefono" class="java.lang.String"/>
+	<field name="docente_contraseña" class="java.lang.Object"/>
+	<field name="docente_foto" class="java.lang.Object"/>
+	<field name="imparte_id" class="java.lang.Integer"/>
+	<field name="imparte_id_taller" class="java.lang.Integer"/>
+	<field name="imparte_id_docente" class="java.lang.Integer"/>
+	<field name="imparte_fecha_inicio" class="java.sql.Date"/>
+	<field name="imparte_fecha_termino" class="java.sql.Date"/>
+	<field name="taller_id" class="java.lang.Integer"/>
+	<field name="taller_nombre" class="java.lang.String"/>
+	<field name="taller_descripcion" class="java.lang.String"/>
+	<field name="taller_id_evento" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="146" y="17" width="278" height="38" uuid="bd4bff5f-0c2d-4c85-bfd4-e4ca1ecd4d6a"/>
+				<textElement>
+					<font fontName="Arial Black" size="18"/>
+				</textElement>
+				<text><![CDATA[Reporte General Imparte]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="3" width="243" height="32" uuid="2c4c35ef-02f2-45cc-988d-93e3287ca9b3"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[Lista de los talleres que imparte cada docente]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="21" y="2" width="100" height="20" uuid="5bda3ebc-aca1-4f8f-adfb-6201fe64cce4"/>
+				<text><![CDATA[Id_Imparte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="2" width="100" height="20" uuid="2e772a06-3686-4a4b-9b06-fc37899a0266"/>
+				<text><![CDATA[Nombre de taller]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="2" width="100" height="20" uuid="f5d3de2b-10ea-461e-a8f2-de466aecb958"/>
+				<text><![CDATA[Nombre del Docente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="2" width="100" height="20" uuid="c5e01185-6c7d-4b0f-a4f0-25843dc2288d"/>
+				<text><![CDATA[Fecha de inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="0" width="100" height="20" uuid="b6b54c4c-1cfe-4fda-8987-b07c650b740b"/>
+				<text><![CDATA[Fecha de termino]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="-227" y="99" width="100" height="20" uuid="e7666c1e-d5ca-49d0-a27e-e52321fed083"/>
+				<textFieldExpression><![CDATA[$F{imparte_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="21" y="4" width="100" height="20" uuid="5a406d14-9a3e-4422-95b3-aab67f791ce1"/>
+				<textFieldExpression><![CDATA[$F{imparte_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="4" width="100" height="20" uuid="ac72cdab-e569-4a57-b4f6-048c80de1a34"/>
+				<textFieldExpression><![CDATA[$F{taller_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="4" width="100" height="20" uuid="b970a8c3-15ec-4a6d-af8b-6e3fffb84ea5"/>
+				<textFieldExpression><![CDATA[$F{docente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="4" width="100" height="20" uuid="4ae7f64e-938d-45ae-b329-2222fded0bef"/>
+				<textFieldExpression><![CDATA[$F{imparte_fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="4" width="100" height="20" uuid="c052c88d-cdc8-4f59-97cc-ae78f6a640d7"/>
+				<textFieldExpression><![CDATA[$F{imparte_fecha_termino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

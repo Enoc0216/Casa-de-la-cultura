@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptImpIND" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f9282892-4655-4f0b-96b0-4c29361e334f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_Imparte" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select i.id,t.nombre,d.nombre as nombreD,i.fecha_inicio,i.fecha_termino from imparte i inner join taller t
+on (i.id_taller=t.id) inner join docente d on(i.id_docente=d.id) and (i.id=$P{id_Imparte})]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreD" class="java.lang.String"/>
+	<field name="fecha_inicio" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_termino" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="25" width="253" height="20" uuid="e98d1fa3-7938-4f85-b32e-f631d5c8cf6b"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE INDIVIDUAL  IMPARTE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="166" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="13" width="100" height="20" uuid="d2c61d69-a4d3-4892-b818-6e2cfc0347ba"/>
+				<text><![CDATA[Id_Imparte]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="13" width="100" height="20" uuid="8bdf35b7-6e78-4662-ba05-b00eaf01a28f"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="111" width="100" height="20" uuid="815a8712-c6ff-478c-990d-cd0f0149c50e"/>
+				<text><![CDATA[Fecha_inicio]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="111" width="100" height="20" uuid="65f9151e-f364-4572-a5a6-c0cf066cf1c4"/>
+				<textFieldExpression><![CDATA[$F{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="146" width="100" height="20" uuid="6e8482b0-bf56-4d5d-86af-34ca96b5b2d9"/>
+				<text><![CDATA[Fecha_termino]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="146" width="100" height="20" uuid="03d04bb1-5113-4083-957e-e16d00f2ec2e"/>
+				<textFieldExpression><![CDATA[$F{fecha_termino}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="75" width="100" height="20" uuid="533a94fd-d435-4440-8ff2-4cbdcae863e5"/>
+				<text><![CDATA[Nombre Docente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="75" width="100" height="20" uuid="f0ecc514-dad2-45e2-ab02-939394805b63"/>
+				<textFieldExpression><![CDATA[$F{nombreD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="51" width="100" height="20" uuid="299619dd-81f4-4f48-aff3-d8c95e148222"/>
+				<text><![CDATA[Nombre Taller]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="51" width="100" height="20" uuid="d50e2bee-32eb-44be-be4f-e48af5cd47b7"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

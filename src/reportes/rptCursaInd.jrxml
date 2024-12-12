@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCursaInd" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3484e59-0094-4b1b-a64c-aaf0092323d0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_evento" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.id, concat(a.apellidoP,' ',a.apellidoM,' ', a.nombre)as nombrec,t.nombre ,c.fecha_inicio,c.fecha_termino from cursa c inner join alumno a on (c.id_alumno=a.id) inner join taller t  on(c.id_taller=t.id) and(c.id=$P{id_evento})]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombrec" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_inicio" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_termino" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="153" y="21" width="233" height="20" uuid="7a27c8b8-3c19-432e-a652-e600d8a9cb9e"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[REPORTE INDIVIDUAL DE CURSA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="127" height="20" uuid="46dcb96f-4226-40b9-92fc-9b3576978591"/>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="127" height="20" uuid="81ace2f4-be3e-4f3e-aaa9-0485461cb042"/>
+				<text><![CDATA[NOMBRE_DEL_ALUMNO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="127" height="20" uuid="6c165c49-6cfb-4125-9e6e-9933e51c07a0"/>
+				<text><![CDATA[NOMBRE_DEL_TALLER:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="127" height="20" uuid="fa0ba8e6-a19d-417c-9168-51ba374c75de"/>
+				<text><![CDATA[FECHA_INICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="127" height="20" uuid="2067d114-a6a4-4486-b777-960ccefae4ce"/>
+				<text><![CDATA[FECHA_TERMINO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="127" y="0" width="100" height="20" uuid="07067a33-c3f7-4ad9-b43e-61568cd76b9b"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="20" width="205" height="20" uuid="65ae8110-2d66-4270-b340-61c16879b1f7"/>
+				<textFieldExpression><![CDATA[$F{nombrec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="40" width="100" height="20" uuid="9cf951a4-8ebe-4e55-b866-7e137e542927"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="60" width="100" height="20" uuid="20e077f9-c23b-4bc4-8f19-41caa9ff57f3"/>
+				<textFieldExpression><![CDATA[$F{fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="80" width="100" height="20" uuid="cac865a3-d6b3-4e83-9e46-82ae520083b5"/>
+				<textFieldExpression><![CDATA[$F{fecha_termino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

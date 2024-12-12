@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCursaG" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0643acb3-ef23-454b-acc6-863e4f84fac2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     alumno.`id` AS alumno_id,
+     alumno.`nombre` AS alumno_nombre,
+     alumno.`apellidoP` AS alumno_apellidoP,
+     cursa.`id` AS cursa_id,
+     cursa.`id_alumno` AS cursa_id_alumno,
+     cursa.`id_taller` AS cursa_id_taller,
+     cursa.`fecha_inicio` AS cursa_fecha_inicio,
+     cursa.`fecha_termino` AS cursa_fecha_termino,
+     taller.`id` AS taller_id,
+     taller.`nombre` AS taller_nombre,
+     taller.`descripcion` AS taller_descripcion,
+     alumno.`apellidoM` AS alumno_apellidoM
+FROM
+     `alumno` alumno INNER JOIN `cursa` cursa ON alumno.`id` = cursa.`id_alumno`
+     INNER JOIN `taller` taller ON cursa.`id_taller` = taller.`id`]]>
+	</queryString>
+	<field name="alumno_id" class="java.lang.Integer"/>
+	<field name="alumno_nombre" class="java.lang.String"/>
+	<field name="alumno_apellidoP" class="java.lang.String"/>
+	<field name="cursa_id" class="java.lang.Integer"/>
+	<field name="cursa_id_alumno" class="java.lang.Integer"/>
+	<field name="cursa_id_taller" class="java.lang.Integer"/>
+	<field name="cursa_fecha_inicio" class="java.sql.Date"/>
+	<field name="cursa_fecha_termino" class="java.sql.Date"/>
+	<field name="taller_id" class="java.lang.Integer"/>
+	<field name="taller_nombre" class="java.lang.String"/>
+	<field name="taller_descripcion" class="java.lang.String"/>
+	<field name="alumno_apellidoM" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="32" width="190" height="20" uuid="2be93204-2f97-4c4c-a5a7-b6c81e9c5e52"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE CURSA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="82" height="20" uuid="73030105-1607-4d51-9f63-5c5e74bf1719"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="77" height="20" uuid="c2bfa389-eb96-4ef5-8b0b-1e4c9b664cd5"/>
+				<text><![CDATA[Fecha_Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="0" width="74" height="20" uuid="a787e8a0-b1d2-45e8-a04a-19486de5acd0"/>
+				<text><![CDATA[Fecha_Termino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="0" width="70" height="20" uuid="e975124b-6bc6-4082-bc1c-e56e7e576d1a"/>
+				<text><![CDATA[Nombre del Alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="0" width="74" height="20" uuid="7e24034a-e2fb-4919-961e-12ab43a16818"/>
+				<text><![CDATA[ApellidoP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="0" width="74" height="20" uuid="fefd5b10-5147-4e7d-b1d3-fc6d3afa962f"/>
+				<text><![CDATA[ApellidoM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="8ed54f40-91e3-4fba-8832-cb412d769111"/>
+				<text><![CDATA[Nombre_del_Taller]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="58" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="82" height="20" uuid="ec7ee7c0-fce6-4c28-93c0-a1a5e905c0da"/>
+				<textFieldExpression><![CDATA[$F{cursa_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="77" height="20" uuid="14140817-5b92-4ed4-897e-00117363e69e"/>
+				<textFieldExpression><![CDATA[$F{cursa_fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="0" width="74" height="20" uuid="48b8d563-901d-4f9d-9bda-effce7f2a9bf"/>
+				<textFieldExpression><![CDATA[$F{cursa_fecha_termino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="0" width="70" height="20" uuid="7a23f93c-c2dc-43dd-a0c9-9384e1b8df33"/>
+				<textFieldExpression><![CDATA[$F{alumno_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="74" height="20" uuid="5ce26c3b-0e14-4854-a980-bd765c0b21bf"/>
+				<textFieldExpression><![CDATA[$F{alumno_apellidoP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="0" width="74" height="20" uuid="444d9236-556a-48c1-b1ee-f55683ee9b0c"/>
+				<textFieldExpression><![CDATA[$F{alumno_apellidoM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="f9068498-bea6-4f81-be04-5c174847646f"/>
+				<textFieldExpression><![CDATA[$F{taller_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
